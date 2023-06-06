@@ -20,7 +20,7 @@
       <div>Explore Star Wars universe...</div>
       <router-link to="/" :class="routerLinkClass">
         <button type="button" data-bs-dismiss="offcanvas">
-          <i class="bi bi-globe-americas"></i>
+          <i class="bi bi-globe"></i>
           PLANETS
         </button>
       </router-link>

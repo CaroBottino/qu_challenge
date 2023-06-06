@@ -8,4 +8,10 @@ export default {
   getPlanets(): Promise<any> {
     return axios.get<any>(`${BASE_URL}/planets`);
   },
+  getAllPeople(): Promise<any> {
+    return axios.get<any>(`${BASE_URL}/people`);
+  },
+  getPeopleByPlanet(planet: number): Promise<any> {
+    return axios.get<any>(`${BASE_URL}/people/${planet}`);
+  },
 };
