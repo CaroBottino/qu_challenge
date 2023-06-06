@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 const NotFound = () => import("../pages/NotFound.vue");
 const Home = () => import("../pages/Home.vue");
+const People = () => import("../pages/People.vue");
 
 const routes = [
   {
@@ -9,6 +10,12 @@ const routes = [
     name: "Home",
     component: Home,
     meta: { title: "QU challenge Bottino" },
+  },
+  {
+    path: "/people",
+    name: "People",
+    component: People,
+    meta: { title: "People" },
   },
   {
     path: "/notfound",
