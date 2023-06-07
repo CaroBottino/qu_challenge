@@ -3,8 +3,9 @@
     <div class="breadcrumb">
       <Breadcrumb :items="bItems" />
     </div>
-    <h1>PEOPLE</h1>
+    <h1 class="prod-title">Search result</h1>
     <hr class="featurette-divider" />
+    <p>People who match your search: {{ criteria }}</p>
     <div>
       <div class="row row-cols-4 row-cols-md-2 g-4">
         <div v-for="someone in people" class="col">
@@ -36,33 +37,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeMount } from "vue";
-import { AxiosError } from "axios";
+import { ref } from "vue";
+import { storeToRefs } from "pinia";
 import Breadcrumb from "../components/Breadcrumb.vue";
-import { People } from "../models/People";
-import SwapiController from "../controllers/SwapiController";
+import { useSearchStore } from "../stores/search.store.js";
 
-const bItems = ref([{ link: "#/people/all", title: "People" }]);
+const bItems = ref([{ link: "#/search", title: "Search" }]);
 
-const people = ref(<People[]>[]);
-
-const getAllPeople = async (): Promise<People[]> => {
-  return await SwapiController.getAllPeople()
-    .then((response: any) => {
-      return response.data.results;
-    })
-    .catch((e: AxiosError) => {
-      throw e.response;
-    });
-};
-
-const setPeople = async () => {
-  people.value = await getAllPeople();
-};
-
-onBeforeMount(() => {
-  setPeople();
-});
+const search = useSearchStore();
+const { people, criteria } = storeToRefs(search);
 </script>
 
 <style scoped>

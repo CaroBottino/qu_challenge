@@ -28,7 +28,6 @@
         </div>
       </div>
     </div>
-    <p>Planets: {{ planets }}</p>
   </div>
 </template>
 

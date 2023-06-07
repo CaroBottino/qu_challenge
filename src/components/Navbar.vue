@@ -61,17 +61,6 @@
               </button>
             </span>
           </form>
-
-          <button
-            class="btn bg-white rounded-pill"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasCart"
-            aria-controls="offcanvasCart"
-            id="btnCart"
-          >
-            <i class="bi bi-bag"></i>
-          </button>
         </div>
       </div>
     </nav>
@@ -82,12 +71,44 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { AxiosError } from "axios";
+import { useRouter } from "vue-router";
 import Menu from "./Menu.vue";
+import { People } from "../models/People";
+import SwapiController from "../controllers/SwapiController";
+import { useSearchStore } from "../stores/search.store.js";
 
 const searchCondition = ref("");
+const search = useSearchStore();
+const router = useRouter();
 
-const doSearch = () => {
-  console.log("search...");
+const getAllPeople = async (): Promise<People[]> => {
+  return await SwapiController.getAllPeople()
+    .then((response: any) => {
+      return response.data.results;
+    })
+    .catch((e: AxiosError) => {
+      throw e.response;
+    });
+};
+
+const searchResult = async () => {
+  const allPeople = await getAllPeople();
+
+  return allPeople.filter((obj: People) => {
+    return obj.name.toUpperCase().includes(searchCondition.value.toUpperCase());
+  });
+};
+
+const doSearch = async () => {
+  search.setCriteria(searchCondition.value);
+  search.searchResult(await searchResult());
+  const criteria: string = searchCondition.value ? searchCondition.value : "";
+
+  router.push({
+    name: "Search",
+    params: { p_criteria: criteria },
+  });
 };
 </script>
 
