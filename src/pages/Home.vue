@@ -3,28 +3,18 @@
     <img src="../assets/img/banner.jpeg" class="img-fluid banner" alt="..." />
     <h1>Welcome to Star Wars universe</h1>
     <div>
-      <div class="row">
-        <div v-for="planet in planets" class="planet col-sm-4">
-          <div class="card">
-            <div class="card-body">
-              <i class="bi bi-globe"></i>
-              <h5 class="card-title">{{ planet.name }}</h5>
-              <p class="card-text">
-                Rotation period: {{ planet.rotation_period }}
-                <br />
-                Orbital period:
-                {{ planet.orbital_period }}
-                <br />
-                Diameter: {{ planet.diameter }}
-                <br />
-                Climate: {{ planet.climate }}
-              </p>
-              <a v-if="planet.residents?.length" href="#" class="btn btn-dark"
-                >See residents</a
-              >
-              <a v-else href="#" class="btn btn-dark disabled">no residents</a>
-            </div>
-          </div>
+      <div class="card" v-for="film in films">
+        <div class="card-header">
+          <strong>{{ film.title }}</strong> / Episode {{ film.episode_id }}
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{ film.opening_crawl }}</p>
+            <footer class="blockquote-footer">
+              Directed by
+              <cite title="Source Title">{{ film.director }}</cite>
+            </footer>
+          </blockquote>
         </div>
       </div>
     </div>
@@ -35,12 +25,12 @@
 import { ref, onBeforeMount } from "vue";
 import { AxiosError } from "axios";
 import SwapiController from "../controllers/SwapiController";
-import { Planet } from "../models/Planet";
+import { Film } from "../models/Film";
 
-const planets = ref(<Planet[]>[]);
+const films = ref(<Film[]>[]);
 
-const getPlanets = async (): Promise<Planet[]> => {
-  return await SwapiController.getPlanets()
+const getFilms = async (): Promise<Film[]> => {
+  return await SwapiController.getFilms()
     .then((response: any) => {
       return response.data.results;
     })
@@ -50,7 +40,7 @@ const getPlanets = async (): Promise<Planet[]> => {
 };
 
 const setPlanets = async () => {
-  planets.value = await getPlanets();
+  films.value = await getFilms();
 };
 
 onBeforeMount(() => {
@@ -59,7 +49,12 @@ onBeforeMount(() => {
 </script>
 
 <style scoped>
-.planet {
-  padding: 1rem;
+.card {
+  padding: 0rem;
+  margin-bottom: 2rem;
+}
+
+.blockquote {
+  font-size: small;
 }
 </style>
