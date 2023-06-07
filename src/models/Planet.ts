@@ -1,5 +1,3 @@
-import { People } from "./People";
-
 export interface Planet {
   name: string;
   rotation_period: number;
@@ -10,5 +8,5 @@ export interface Planet {
   terrain: string;
   surface_water: number;
   population: number;
-  residents?: People[];
+  residents?: String[];
 }

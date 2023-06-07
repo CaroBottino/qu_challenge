@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 const NotFound = () => import("../pages/NotFound.vue");
 const Home = () => import("../pages/Home.vue");
+const Planets = () => import("../pages/Planets.vue");
 const People = () => import("../pages/People.vue");
 const Search = () => import("../pages/Search.vue");
 
@@ -11,6 +12,12 @@ const routes = [
     name: "Home",
     component: Home,
     meta: { title: "QU challenge Bottino" },
+  },
+  {
+    path: "/planets",
+    name: "Planets",
+    component: Planets,
+    meta: { title: "Planets" },
   },
   {
     path: "/people",

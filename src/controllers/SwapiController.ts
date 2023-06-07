@@ -11,4 +11,7 @@ export default {
   getAllPeople(): Promise<any> {
     return axios.get<any>(`${BASE_URL}/people`);
   },
+  getFilms(): Promise<any> {
+    return axios.get<any>(`${BASE_URL}/films`);
+  },
 };

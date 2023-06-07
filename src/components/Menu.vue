@@ -7,7 +7,7 @@
   >
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasMenuLabel">
-        <i class="bi bi-cup-hot"></i>QU challenge Bottino
+        <i class="bi bi-robot"></i>QU challenge Bottino
       </h5>
       <button
         type="button"
@@ -19,6 +19,12 @@
     <div class="offcanvas-body">
       <div>Explore Star Wars universe...</div>
       <router-link to="/" :class="routerLinkClass">
+        <button type="button" data-bs-dismiss="offcanvas">
+          <i class="bi bi-camera-reels"></i>
+          FILMS
+        </button>
+      </router-link>
+      <router-link to="/planets" :class="routerLinkClass">
         <button type="button" data-bs-dismiss="offcanvas">
           <i class="bi bi-globe"></i>
           PLANETS

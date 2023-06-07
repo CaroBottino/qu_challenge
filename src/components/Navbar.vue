@@ -47,7 +47,7 @@
             <input
               class="form-control me-2 rounded-pill"
               type="search"
-              placeholder="buscar"
+              placeholder="looking for someone?"
               id="search-input"
               v-model="searchCondition"
             />
