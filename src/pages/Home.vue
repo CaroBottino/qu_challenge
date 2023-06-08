@@ -49,6 +49,9 @@ onBeforeMount(() => {
 </script>
 
 <style scoped>
+div {
+  color-scheme: dark;
+}
 .card {
   padding: 0rem;
   margin-bottom: 2rem;

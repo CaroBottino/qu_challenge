@@ -103,7 +103,7 @@ const searchResult = async () => {
 const doSearch = async () => {
   search.setCriteria(searchCondition.value);
   search.searchResult(await searchResult());
-  const criteria: string = searchCondition.value ? searchCondition.value : "";
+  const criteria: string = searchCondition.value ? searchCondition.value : " ";
 
   router.push({
     name: "Search",

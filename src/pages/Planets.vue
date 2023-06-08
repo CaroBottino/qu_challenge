@@ -133,5 +133,6 @@ onBeforeMount(() => {
 
 .sortable {
   cursor: pointer;
+  color: #ffe301;
 }
 </style>

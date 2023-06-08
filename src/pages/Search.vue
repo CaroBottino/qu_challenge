@@ -54,4 +54,8 @@ const { people, criteria } = storeToRefs(search);
   text-align: center;
   margin-bottom: -25px;
 }
+
+p {
+  color: #f9f9f9;
+}
 </style>
