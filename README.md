@@ -1,22 +1,28 @@
 # qu_challenge
 
 Web Developer Challenge for QU
+By Carolina Bottino
 
-### Vue 3 + TypeScript + Vite
+### Technologies
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+- Vue 3
+- TypeScript
+- Vite
 
-### Recommended IDE Setup
+### Recommended IDE
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- VS Code
 
-### Type Support For `.vue` Imports in TS
+### Questions asked...
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+1. What's a closure? Where in the code is there a closure?
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+The term closure comes from the fact that a piece of code (block, function) can have free variables that are closed (i.e. bound to a value) by the environment in which the block of code is defined. A closure is basically a function or code block that can access non-local values through its free variables after these have been bound by the context.
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+An example of closure can be found in function sortMethods(), inside Planets.vue page.
+
+2. Which are the potential side-effects in any function? Could you point out any of these cases in your code? Are they expected? Can they be avoided?
+
+A function is said to have a side effect if it modifies some state variable value(s) outside its local environment, which is to say if it has any observable effect other than its primary effect of returning a value to the invoker of the operation.
+
+The function sort(), which is called when you click on any of headers in table, is a case of a side-effect function. In this case, this side-effects are expected because they happen to be the objective of the function.
